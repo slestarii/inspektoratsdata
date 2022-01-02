@@ -45,7 +45,7 @@
             @foreach ($rencana_pengadaan_barang as $rencana)
             <option value="{{ $rencana->ID_PENGADAAN}}">{{ $rencana->URAIAN_R_PENGADAAN}}</option>
             @endforeach
-            </select><br>
+            </select><br>        
             <button type="submit" class="btn btn-primary">Simpan</button>
       </form>
     <div class="card-footer">

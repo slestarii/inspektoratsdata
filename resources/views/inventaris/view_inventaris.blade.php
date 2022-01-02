@@ -27,7 +27,13 @@
 			<i class="fas fa-times"></i></button>
 	  </div>
   </div>
-
+  <div class="card-body">
+    <div class="card">
+			<div class="card-header">
+				<a href="/inventaris/form_inventaris">
+				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data</button>
+				</a>
+			</div>
       <div class="card-body">
       	<table id="example1" class="table table-bordered table-striped">
           <thead>

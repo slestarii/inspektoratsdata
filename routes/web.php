@@ -37,6 +37,8 @@ Route::get('/barang/form_barang', [BarangController::class, 'insertBarang']);
 Route::post('/barang/form_barang', [BarangController::class, 'tambahBarang']);
 
 Route::get('/view_inventaris', [InventarisController::class, 'index']);
+Route::get('/inventaris/form_inventaris', [InventarisController::class, 'insertInventaris']);
+Route::post('/inventaris/form_inventaris', [InventarisController::class, 'tambahInventaris']);
 
 Route::get('/view_arsip', [ArsipController::class, 'index']);
 Route::get('/arsip/form_arsip', [ArsipController::class, 'insertArsip']);
