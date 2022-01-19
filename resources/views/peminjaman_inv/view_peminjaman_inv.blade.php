@@ -52,6 +52,11 @@
                   <td>{{ $data->ID_BARANG_INV }}</td>
                   <td>{{ $data->JUMLAH_INV }}</td>
                   <td>{{ $data->TANGGAL_PINJAM_INV }}</td>
+                  <td>
+						      <a href='/keluarga/insert_view_keluarga/{{ $data->NIK_PEGAWAI }}'>
+                  Detail Peminjaman
+                  </a>
+						</td>
               </tr>
             @endforeach
             </tbody>

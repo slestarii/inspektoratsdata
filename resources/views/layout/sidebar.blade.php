@@ -56,7 +56,7 @@
                   <a href="/view_barang" class="nav-link">
                 @endif
                 <i class="fas fa-archive nav-icon"></i>
-                  <p>Barang Habis Pakai</p>
+                  <p>Barang Pakai Habis</p>
                 </a>
               </li>
               <li class="nav-item">

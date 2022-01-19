@@ -19,7 +19,7 @@ class PengadaanController extends Controller
             'pengadaan_barang' => $pengadaan_barang,
         );
 
-        return view('pengadaan/view_pengadaan',$data); 
+        return view('pengadaan/view_pengadaan', $data); 
     }
 
     public function dropdownPengadaan(Request $post)
@@ -31,7 +31,7 @@ class PengadaanController extends Controller
             'pengadaan_barang' => $pengadaan_barang,
         );
 
-        return view('/pengadaan/dropdown_pengadaan');
+        return view('/pengadaan/dropdown_pengadaan', $data);
     }
 
     public function insertPengadaan()
@@ -40,7 +40,7 @@ class PengadaanController extends Controller
         $pengadaan_barang = DB::table('pengadaan_barang')->get();
         $data = array(
             'menu' => 'barang',
-            'submenu' => 'view_rencana_pengadaan',
+            'submenu' => 'view_pengadaan',
             'rencana_pengadaan_barang' => $rencana_pengadaan_barang,
             'pengadaan_barang' => $pengadaan_barang,
         );

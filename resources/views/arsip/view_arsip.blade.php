@@ -16,6 +16,7 @@
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
 @endsection
 
 @section('content')
@@ -55,40 +56,42 @@
                 <th style="text-align:center">Jangka waktu simpan</th> 
                 <th style="text-align:center">Nasib Akhir</th>
                 <th style="text-align:center">Kategori Arsip</th>
-                <th style="text-align:center">Tahun Pemnindahan</th>
+                <th style="text-align:center">Tahun Pemindahan</th>
+                <th style="text-align:center">Unit Pengolah</th>
+                <!-- <th style="text-align:center">Status Peminjaman</th> -->
               </tr>
             </thead>
 
-              <tbody>
-              @foreach($arsip as $data)
-                <tr>
-                  <td>{{ $data->KODE_KLAS }}</td>
-                  <td>{{ $data->INDEKS }}</td>
-                  <td>{{ $data->JENIS_ARSIP }}</td>
-                  <td>{{ $data->KURUN_WAKTU }}</td>
-                  <td>{{ $data->TINGKAT_PERKEMBANGAN }}</td>
-                  <td>{{ $data->JUMLAH }}</td>
-                  <td>{{ $data->KETERANGAN_ARSIP }}</td>
-                  <td>{{ $data->NO_DEF_FOLDER }}</td>
-                  <td>{{ $data->NO_DEF_BLOK }}</td>
-                  <td>{{ $data->LOKASI_SIMPAN }}</td>
-                  <td>{{ $data->JANGKA_WAKTU }}</td>
-                  <td>{{ $data->NASIB_AKHIR }}</td>
-                  <td>{{ $data->KATEGORI_ARSIP }}</td>
-                  <td>{{ $data->TAHUN_PEMINDAHAN }}</td>
-                </tr>
-              @endforeach
-              </tbody>
-              <tfoot>
-              <!-- <tr>
-              <th>NIS_NIP</th>
-              <th>nama_anggota</th>
-              <th>tahun_masuk</th>
-              <th>kelas</th>
-              <th>username_anggota</th>
-              <th>password_anggota</th>
-              </tr> -->
-              </tfoot>
+            <tbody>
+            @foreach($arsip as $data)
+              <tr>
+                <td>{{ $data->KODE_KLAS }}</td>
+                <td>{{ $data->INDEKS }}</td>
+                <td>{{ $data->JENIS_ARSIP }}</td>
+                <td>{{ $data->KURUN_WAKTU }}</td>
+                <td>{{ $data->TINGKAT_PERKEMBANGAN }}</td>
+                <td>{{ $data->JUMLAH }}</td>
+                <td>{{ $data->KETERANGAN_ARSIP }}</td>
+                <td>{{ $data->NO_DEF_FOLDER }}</td>
+                <td>{{ $data->NO_DEF_BLOK }}</td>
+                <td>{{ $data->LOKASI_SIMPAN }}</td>
+                <td>{{ $data->JANGKA_WAKTU }}</td>
+                <td>{{ $data->NASIB_AKHIR }}</td>
+                <td>{{ $data->KATEGORI_ARSIP }}</td>
+                <td>{{ $data->TAHUN_PEMINDAHAN }}</td>
+              </tr>
+            @endforeach
+            </tbody>
+            <tfoot>
+            <!-- <tr>
+            <th>NIS_NIP</th>
+            <th>nama_anggota</th>
+            <th>tahun_masuk</th>
+            <th>kelas</th>
+            <th>username_anggota</th>
+            <th>password_anggota</th>
+            </tr> -->
+            </tfoot>
           </table>
         </div>
 

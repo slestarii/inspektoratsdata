@@ -38,20 +38,22 @@
       	<table id="example1" class="table table-bordered table-striped">
           <thead>
               <tr>
-                <th style="text-align:center">Nomor</th>
+                <th style="text-align:center">No.</th>
                 <th style="text-align:center">Uraian Jenis Barang</th>
                 <th style="text-align:center">Volume</th>
                 <th style="text-align:center">Satuan</th>
-                <th style="text-align:center">Harga</th>
+                <th style="text-align:center">Pagu</th>
+                <th style="text-align:center">Realisasi</th>
+                <th style="text-align:center">Keterangan</th>
               </tr>
           </thead>
           <tbody>
           @foreach($pengadaan_barang as $data)
               <tr>
-                  <td>{{ $data->URAIAN_R_PENGADAAN }}</td>
-                  <td>{{ $data->VOLUME }}</td>
-                  <td>{{ $data->SATUAN }}</td>
-                  <td>{{ $data->HARGA }}</td>
+                  <td>{{ $data->URAIAN_PENGADAAN1 }}</td>
+                  <td style="text-align:center">{{ $data->VOLUME1 }}</td>
+                  <td style="text-align:center">{{ $data->SATUAN1 }}</td>
+                  <td style="text-align:center">{{ $data->HARGA1 }}</td>
               </tr>
           @endforeach
           </tbody>

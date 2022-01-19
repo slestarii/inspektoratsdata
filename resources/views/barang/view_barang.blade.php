@@ -38,7 +38,7 @@
       	<table id="example1" class="table table-bordered table-striped">
           <thead>
               <tr>
-                <th style="text-align:center">Nomor</th>
+                <th style="text-align:center">No.</th>
                 <th style="text-align:center">Uraian Rician</th>
                 <th style="text-align:center">Saldo Awal</th> 
                 <th style="text-align:center">Penambahan</th> 
@@ -52,12 +52,12 @@
           @foreach($barang_pakai_habis as $data)
               <tr>
                   <td>{{ $data->URAIAN_RINCIAN }}</td>
-                  <td>{{ $data->SALDO_AWAL }}</td>
-                  <td>{{ $data->PENAMBAHAN }}</td>
-                  <td>{{ $data->PENGURANGAN }}</td>
-                  <td>{{ $data->SALDO_AKHIR }}</td>
-                  <td>{{ $data->HARGA_PEMBELIAN }}</td>
-                  <td>{{ $data->SALDO_AKHIR_PERSEDIAAN }}</td>
+                  <td style="text-align:center">{{ $data->SALDO_AWAL }}</td>
+                  <td style="text-align:center">{{ $data->PENAMBAHAN }}</td>
+                  <td style="text-align:center">{{ $data->PENGURANGAN }}</td>
+                  <td style="text-align:center">{{ $data->SALDO_AKHIR }}</td>
+                  <td style="text-align:center">{{ $data->HARGA_PEMBELIAN }}</td>
+                  <td style="text-align:center">{{ $data->SALDO_AKHIR_PERSEDIAAN }}</td>
               </tr>
           @endforeach
           </tbody>
