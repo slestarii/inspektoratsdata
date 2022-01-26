@@ -1,12 +1,12 @@
 @extends("layout.mainlayout")
 
-@section("page_title","Inspektorat | Rencana Pengadaan Barang")
+@section("page_title","Inspektorat | Permintaan Barang")
 
-@section("title","Rencana Pengadaan Barang")
+@section("title","Permintaan Barang")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item active">Rencana Pengadaan Barang</li> 
+<li class="breadcrumb-item active">Permintaan Barang</li> 
 @endsection
 
 @section('custom_css')
@@ -19,7 +19,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> Data Rencana Pengadaan Barang</h3>
+	  <h3 class="card-title"> Data Permintaan Barang</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -30,7 +30,7 @@
   <div class="card-body">
     <div class="card">
 			<div class="card-header">
-				<a href="/rencana_pengadaan/form_rencana_pengadaan">
+				<a href="/permintaan/form_permintaan">
 				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data</button>
 				</a>
 			</div>
@@ -45,22 +45,15 @@
                 <th style="text-align:center">Pagu</th>
                 <th style="text-align:center">Realisasi</th>
                 <th style="text-align:center">Keterangan</th>
-                <th style="text-align:center">Aksi</th>
               </tr>
           </thead>
           <tbody>
-          @foreach($rencana_pengadaan_barang as $data)
+          @foreach($permintaan_barang as $data)
               <tr>
-                  <td>{{ $data->URAIAN_R_PENGADAAN }}</td>
-                  <td style="text-align:center">{{ $data->VOLUME }}</td>
-                  <td style="text-align:center">{{ $data->SATUAN }}</td>
-                  <td style="text-align:center">{{ $data->PAGU }}</td>
-                  <td style="text-align:center">{{ $data->REALISASI }}</td>
-                  <td style="text-align:center">{{ $data->KETERANGAN_RPB }}</td>
-                  <td>
-                  <button onclick="confirmDelete('{{ $data->ID_PENGADAAN }}')" class="btn btn-danger">
-                  <i class="fas fa-trash"></i> Hapus</button>
-                  </td>
+                  <td>{{ $data->URAIAN_PENGADAAN1 }}</td>
+                  <td style="text-align:center">{{ $data->VOLUME1 }}</td>
+                  <td style="text-align:center">{{ $data->SATUAN1 }}</td>
+                  <td style="text-align:center">{{ $data->HARGA1 }}</td>
               </tr>
           @endforeach
           </tbody>
@@ -102,8 +95,7 @@ addNumeration("table")
 </script>
 <!-- /.penomoran-otomatis -->
 
-<!-- konfirmasi-hapus -->
-<div class="modal fade" id="deleterencana_pengadaan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deleteLHP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -124,7 +116,6 @@ addNumeration("table")
     </div>
   </div>
 </div>
-<!-- /.konfirmasi-hapus -->
 
 @endsection
 
@@ -151,8 +142,8 @@ addNumeration("table")
 	function confirmDelete(id)
 	{
 		var link = document.getElementById('deleteLink')
-		link.href="/rencana_pengadaan/hapus/" + id
-		$('#deleterencana_pengadaan').modal('show')
+		link.href="/lhp/hapus/" + id
+		$('#deleteLHP').modal('show')
 	}
 
 </script>

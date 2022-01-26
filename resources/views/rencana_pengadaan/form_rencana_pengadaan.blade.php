@@ -43,7 +43,9 @@
             Uraian Jenis Barang : <input type="text" class="form-control" name="URAIAN_R_PENGADAAN"><br>
             Volume : <input type="text"  class="form-control" name="VOLUME"><br>
             Satuan : <input type="text" class="form-control" name="SATUAN"><br>
-            Harga : <input type="text" class="form-control" name="HARGA"><br>        
+            Pagu : <input type="text" class="form-control" name="PAGU"><br>  
+            Realisasi : <input type="text" class="form-control" name="REALISASI"><br>
+            Keterangan : <input type="text" class="form-control" name="KETERANGAN_RPB"><br>
             <button type="submit" class="btn btn-primary">Simpan</button>
       </form>
     <div class="card-footer">

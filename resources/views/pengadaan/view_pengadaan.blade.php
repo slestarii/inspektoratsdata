@@ -45,6 +45,7 @@
                 <th style="text-align:center">Pagu</th>
                 <th style="text-align:center">Realisasi</th>
                 <th style="text-align:center">Keterangan</th>
+                <th style="text-align:center">Aksi</th>
               </tr>
           </thead>
           <tbody>
@@ -53,7 +54,13 @@
                   <td>{{ $data->URAIAN_PENGADAAN1 }}</td>
                   <td style="text-align:center">{{ $data->VOLUME1 }}</td>
                   <td style="text-align:center">{{ $data->SATUAN1 }}</td>
-                  <td style="text-align:center">{{ $data->HARGA1 }}</td>
+                  <td style="text-align:center">{{ $data->PAGU1 }}</td>
+                  <td style="text-align:center">{{ $data->REALISASI1 }}</td>
+                  <td style="text-align:center">{{ $data->KETERANGAN_RPB1 }}</td>
+                  <td>
+                  <button onclick="confirmDelete('{{ $data->ID_PENGADAAN1 }}')" class="btn btn-danger">
+                  <i class="fas fa-trash"></i> Hapus</button>
+                  </td>
               </tr>
           @endforeach
           </tbody>
@@ -95,7 +102,7 @@ addNumeration("table")
 </script>
 <!-- /.penomoran-otomatis -->
 
-<div class="modal fade" id="deleteLHP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deletepengadaan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -142,8 +149,8 @@ addNumeration("table")
 	function confirmDelete(id)
 	{
 		var link = document.getElementById('deleteLink')
-		link.href="/lhp/hapus/" + id
-		$('#deleteLHP').modal('show')
+		link.href="/pengadaan/hapus/" + id
+		$('#deletepengadaan').modal('show')
 	}
 
 </script>

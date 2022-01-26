@@ -38,23 +38,15 @@
 
     <div class="card-body">
     <!-- <h1>Tambah Data Rencana Pengadaaan</h1> -->
-      <form action="/pengadaan/tambahPengadaan" method="post">
-            <input type = "hidden" name = "_token" value = "<?php echo csrf_token(
-            ) ?>">
-            Uraian Jenis Barang : <input type="text" class="form-control" name="URAIAN_PENGADAAN1"
-            value ="{{ $pengadaan_barang[0]->URAIAN_R_PENGADAAN }}"><br>
-            Volume : <input type="text" class="form-control" name="VOLUME1"
-            value ="{{ $pengadaan_barang[0]->VOLUME }}"><br>
-            Satuan : <input type="text" class="form-control" name="SATUAN1"
-            value ="{{ $pengadaan_barang[0]->SATUAN }}"><br>
-            Pagu : <input type="text" class="form-control" name="PAGU1"
-            value ="{{ $pengadaan_barang[0]->PAGU }}"><br>
-            Realisasi : <input type="text" class="form-control" name="REALISASI1"
-            value ="{{ $pengadaan_barang[0]->REALISASI }}"><br>
-            Keterangan : <input type="text" class="form-control" name="KETERANGAN_RPB1"
-            value ="{{ $pengadaan_barang[0]->KETERANGAN_RPB }}"><br>
-            <input type="submit" value="Update">
-            
+      <form action="/pengadaan/dropdownPengadaan" method="post" enctype="multipart/form-data">
+        <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+            Uraian Jenis Barang : 
+            <select class="form-control" name="ID_PENGADAAN">
+            @foreach ($rencana_pengadaan_barang as $rencana)
+            <option value="{{ $rencana->ID_PENGADAAN}}">{{ $rencana->URAIAN_R_PENGADAAN}}</option>
+            @endforeach
+            </select><br>        
+            <button type="submit" class="btn btn-primary">Simpan</button>
       </form>
     <div class="card-footer">
 

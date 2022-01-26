@@ -54,9 +54,17 @@ class PengadaanController extends Controller
             'URAIAN_PENGADAAN1' => $post->URAIAN_PENGADAAN1,
             'VOLUME1' => $post->VOLUME1,
             'SATUAN1' => $post->SATUAN1,
-            'HARGA1' => $post->HARGA1,
+            'PAGU1' => $post->PAGU1,
+            'REALISASI1' => $post->REALISASI1,
+            'KETERANGAN_RPB1' => $post->KETERANGAN_RPB1,
         ]);
 
         return redirect('/view_pengadaan');
+    }
+
+    public function hapus($ID_PENGADAAN1)
+    {
+    	DB::table('pengadaan_barang')->where('ID_PENGADAAN1',$ID_PENGADAAN1)->delete();
+	    return redirect('/view_pengadaan');
     }
 }

@@ -40,9 +40,17 @@ class RencanaPengadaanController extends Controller
             'URAIAN_R_PENGADAAN' => $post->URAIAN_R_PENGADAAN,
             'VOLUME' => $post->VOLUME,
             'SATUAN' => $post->SATUAN,
-            'HARGA' => $post->HARGA,
+            'PAGU' => $post->PAGU,
+            'REALISASI' => $post->REALISASI,
+            'KETERANGAN_RPB' => $post->KETERANGAN_RPB,
         ]);
 
         return redirect('/view_rencana_pengadaan');
+    }
+
+    public function hapus($ID_PENGADAAN)
+    {
+    	DB::table('rencana_pengadaan_barang')->where('ID_PENGADAAN',$ID_PENGADAAN)->delete();
+	    return redirect('/view_rencana_pengadaan');
     }
 }

@@ -44,7 +44,7 @@
             @endif  
             <i class="fas fa-bars nav-icon"></i>
               <p>
-                Barang
+                Barang  
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -79,6 +79,16 @@
                 <i class="fas fa-cart-plus nav-icon"></i>
                   <!-- <i class="far fa-circle nav-icon"></i> -->
                   <p>Pengadaan Barang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                @if($submenu == 'view_permintaan') 
+                  <a href="/view_permintaan" class="nav-link active">
+                @else
+                  <a href="/view_permintaan" class="nav-link">
+                @endif
+                <i class="fas fa-cart-arrow-down nav-icon"></i>
+                  <p>Permintaan Barang</p>
                 </a>
               </li>
             </ul>
