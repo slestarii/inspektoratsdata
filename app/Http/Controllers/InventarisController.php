@@ -55,4 +55,10 @@ class InventarisController extends Controller
         ]);
         return redirect('/view_inventaris');
     }
+
+    public function hapus($ID_BARANG_INV)
+    {
+    	DB::table('barang_inventaris')->where('ID_BARANG_INV',$ID_BARANG_INV)->delete();
+	    return redirect('/view_inventaris');
+    }
 }

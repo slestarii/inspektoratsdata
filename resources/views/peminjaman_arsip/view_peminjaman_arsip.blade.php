@@ -35,27 +35,39 @@
 				</a>
 			</div>
       <div class="card-body">
-      	<table id="example1" class="table table-bordered table-striped">
+      <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th style="text-align:center">Nomor</th>
-				<th style="text-align:center">Peminjam</th>
+                <th style="text-align:center">Peminjam</th>
                 <th style="text-align:center">Jenis Arsip</th>
-                <th style="text-align:center">Lokasi Simpan</th> 
                 <th style="text-align:center">Tanggal Pinjam</th> 
+                <th style="text-align:center">Aksi</th>
               </tr>
             </thead>
             <tbody>
             @foreach($peminjaman_arsip as $data)
               <tr>
-                  <td>{{ $data->NIP }}</td>
-                    @foreach($ID_ARSIP as $arsip)
-                    @if ($arsip->ID_ARSIP === $data->ID_ARSIP)
-                    <td>{{$arsip->ID_ARSIP}}</td>
-                    <td>{{$arsip->LOKASI_SIMPAN}}</td>
+                  <td>
+                    @foreach($user as $pegawai)
+                    @if ($pegawai->NIP === $data->NIP)
+                      {{$pegawai->NAMA_USER}}<br>
                     @endif
                     @endforeach
+                  </td>
+                  <td>
+                    @foreach($arsip as $arsip)
+                    @if ($arsip->ID_ARSIP === $data->ID_ARSIP)
+                      {{$arsip->JENIS_ARSIP}}<br>
+                    @endif
+                    @endforeach
+                  </td>
+                  <td>{{ $data->JUMLAH_ARSIP }}</td>
                   <td>{{ $data->TANGGAL_PINJAM_ARSIP }}</td>
+                  <td>
+                  <button onclick="confirmDelete('{{ $data->ID_PEMINJAMAN_ARSIP }}')" class="btn btn-danger">
+                  <i class="fas fa-trash"></i> Hapus</button>
+                  </td>
               </tr>
             @endforeach
             </tbody>
@@ -95,7 +107,7 @@ addNumeration("table")
 </script>
 <!-- /.penomoran-otomatis -->
 
-<div class="modal fade" id="deleteLHP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deletepeminjaman_arsip" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -142,8 +154,8 @@ addNumeration("table")
 	function confirmDelete(id)
 	{
 		var link = document.getElementById('deleteLink')
-		link.href="/lhp/hapus/" + id
-		$('#deleteLHP').modal('show')
+		link.href="/peminjaman_arsip/hapus/" + id
+		$('#deletepeminjaman_arsip').modal('show')
 	}
 
 </script>

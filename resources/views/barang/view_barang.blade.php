@@ -46,6 +46,7 @@
                 <th style="text-align:center">Saldo Akhir</th>
                 <th style="text-align:center">Harga Pembelian</th>
                 <th style="text-align:center">Saldo Akhir Persediaan</th>
+                <th style="text-align:center">Aksi</th> 
               </tr>
           </thead>
           <tbody>
@@ -58,6 +59,10 @@
                   <td style="text-align:center">{{ $data->SALDO_AKHIR }}</td>
                   <td style="text-align:center">{{ $data->HARGA_PEMBELIAN }}</td>
                   <td style="text-align:center">{{ $data->SALDO_AKHIR_PERSEDIAAN }}</td>
+                  <td>
+                  <button onclick="confirmDelete('{{ $data->ID_BARANG_HABIS_PAKAI }}')" class="btn btn-danger">
+                  <i class="fas fa-trash"></i> Hapus</button>
+                  </td>
               </tr>
           @endforeach
           </tbody>
@@ -99,7 +104,7 @@ addNumeration("table")
 </script>
 <!-- /.penomoran-otomatis -->
 
-<div class="modal fade" id="deleteLHP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deletebarang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -146,8 +151,8 @@ addNumeration("table")
 	function confirmDelete(id)
 	{
 		var link = document.getElementById('deleteLink')
-		link.href="/lhp/hapus/" + id
-		$('#deleteLHP').modal('show')
+		link.href="/barang/hapus/" + id
+		$('#deletebarang').modal('show')
 	}
 
 </script>

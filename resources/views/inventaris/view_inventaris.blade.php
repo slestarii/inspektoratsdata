@@ -74,6 +74,10 @@
                   <td>{{ $data->NO_BPKB }}</td>
                   <td>{{ $data->HARGA_PEROLEHAN }}</td>
                   <td>{{ $data->KETERANGAN_INV }}</td>
+                  <td>
+                  <button onclick="confirmDelete('{{ $data->ID_BARANG_INV }}')" class="btn btn-danger">
+                  <i class="fas fa-trash"></i> Hapus</button>
+                  </td>
               </tr>
           @endforeach
           </tbody>
@@ -114,7 +118,7 @@ addNumeration("table")
 </script>
 <!-- /.penomoran-otomatis -->
 
-<div class="modal fade" id="deleteLHP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deleteinventaris" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -161,8 +165,8 @@ addNumeration("table")
 	function confirmDelete(id)
 	{
 		var link = document.getElementById('deleteLink')
-		link.href="/lhp/hapus/" + id
-		$('#deleteLHP').modal('show')
+		link.href="/inventaris/hapus/" + id
+		$('#deleteinventaris').modal('show')
 	}
 
 </script>

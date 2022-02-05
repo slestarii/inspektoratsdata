@@ -48,4 +48,10 @@ class BarangController extends Controller
 
         return redirect('/view_barang');
     }
+
+    public function hapus($ID_BARANG_HABIS_PAKAI)
+    {
+    	DB::table('barang_pakai_habis')->where('ID_BARANG_HABIS_PAKAI',$ID_BARANG_HABIS_PAKAI)->delete();
+	    return redirect('/view_barang');
+    }
 }

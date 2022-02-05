@@ -43,20 +43,32 @@
                 <th style="text-align:center">Jenis Barang</th>
                 <th style="text-align:center">Jumlah</th> 
                 <th style="text-align:center">Tanggal Pinjam</th> 
+                <th style="text-align:center">Aksi</th>
               </tr>
             </thead>
             <tbody>
             @foreach($peminjaman_barang_inv as $data)
               <tr>
-                  <td>{{ $data->NIP }}</td>
-                  <td>{{ $data->ID_BARANG_INV }}</td>
+                  <td>
+                    @foreach($user as $pegawai)
+                    @if ($pegawai->NIP === $data->NIP)
+                      {{$pegawai->NAMA_USER}}<br>
+                    @endif
+                    @endforeach
+                  </td>
+                  <td>
+                    @foreach($barang_inventaris as $barang_inv)
+                    @if ($barang_inv->ID_BARANG_INV === $data->ID_BARANG_INV)
+                      {{$barang_inv->NAMA_BARANG_INV}}<br>
+                    @endif
+                    @endforeach
+                  </td>
                   <td>{{ $data->JUMLAH_INV }}</td>
                   <td>{{ $data->TANGGAL_PINJAM_INV }}</td>
                   <td>
-						      <a href='/keluarga/insert_view_keluarga/{{ $data->NIK_PEGAWAI }}'>
-                  Detail Peminjaman
-                  </a>
-						</td>
+                  <button onclick="confirmDelete('{{ $data->ID_PEMINJAMAN_INV }}')" class="btn btn-danger">
+                  <i class="fas fa-trash"></i> Hapus</button>
+                  </td>
               </tr>
             @endforeach
             </tbody>
@@ -96,7 +108,7 @@ addNumeration("table")
 </script>
 <!-- /.penomoran-otomatis -->
 
-<div class="modal fade" id="deleteLHP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deletepeminjaman_inv" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -143,8 +155,8 @@ addNumeration("table")
 	function confirmDelete(id)
 	{
 		var link = document.getElementById('deleteLink')
-		link.href="/lhp/hapus/" + id
-		$('#deleteLHP').modal('show')
+		link.href="/peminjaman_inv/hapus/" + id
+		$('#deletepeminjaman_inv').modal('show')
 	}
 
 </script>

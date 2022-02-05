@@ -55,4 +55,10 @@ class ArsipController extends Controller
 
         return redirect('/view_arsip');
     }
+
+    public function hapus($ID_ARSIP)
+    {
+    	DB::table('arsip')->where('ID_ARSIP',$ID_ARSIP)->delete();
+	    return redirect('/view_arsip');
+    }
 }

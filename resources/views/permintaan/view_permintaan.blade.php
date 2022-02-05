@@ -42,18 +42,23 @@
                 <th style="text-align:center">Uraian Jenis Barang</th>
                 <th style="text-align:center">Volume</th>
                 <th style="text-align:center">Satuan</th>
-                <th style="text-align:center">Pagu</th>
                 <th style="text-align:center">Realisasi</th>
                 <th style="text-align:center">Keterangan</th>
+                <th style="text-align:center">Aksi</th>
               </tr>
           </thead>
           <tbody>
           @foreach($permintaan_barang as $data)
               <tr>
-                  <td>{{ $data->URAIAN_PENGADAAN1 }}</td>
-                  <td style="text-align:center">{{ $data->VOLUME1 }}</td>
-                  <td style="text-align:center">{{ $data->SATUAN1 }}</td>
-                  <td style="text-align:center">{{ $data->HARGA1 }}</td>
+                  <td>{{ $data->URAIAN_PERMINTAAN }}</td>
+                  <td style="text-align:center">{{ $data->VOLUME2 }}</td>
+                  <td style="text-align:center">{{ $data->SATUAN2 }}</td>
+                  <td style="text-align:center">{{ $data->REALISASI2 }}</td>
+                  <td style="text-align:center">{{ $data->KETERANGAN_RPB2 }}</td>
+                  <td>
+                  <button onclick="confirmDelete('{{ $data->ID_PERMINTAAN }}')" class="btn btn-danger">
+                  <i class="fas fa-trash"></i> Hapus</button>
+                  </td>
               </tr>
           @endforeach
           </tbody>
@@ -95,7 +100,7 @@ addNumeration("table")
 </script>
 <!-- /.penomoran-otomatis -->
 
-<div class="modal fade" id="deleteLHP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deletepermintaan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -142,8 +147,8 @@ addNumeration("table")
 	function confirmDelete(id)
 	{
 		var link = document.getElementById('deleteLink')
-		link.href="/lhp/hapus/" + id
-		$('#deleteLHP').modal('show')
+		link.href="/permintaan/hapus/" + id
+		$('#deletepermintaan').modal('show')
 	}
 
 </script>

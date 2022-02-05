@@ -1,13 +1,13 @@
 @extends("layout.mainlayout")
 
-@section("page_title","Inspektorat | Tambah Pengadaan")
+@section("page_title","Inspektorat | Tambah Permintaan")
 
-@section("title","Tambah Pengadaan Barang")
+@section("title","Tambah Permintaan Barang")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/view_pengadaan">Pengadaan Barang</a></li>
-<li class="breadcrumb-item active">Tambah Pengadaan Barang</li> 
+<li class="breadcrumb-item"><a href="/view_permintaan">Permintaan Barang</a></li>
+<li class="breadcrumb-item active">Tambah Permintaan Barang</li> 
 @endsection
 
 @section('custom_css')  
@@ -38,12 +38,12 @@
 
     <div class="card-body">
     <!-- <h1>Tambah Data Rencana Pengadaaan</h1> -->
-      <form action="/pengadaan/dropdownPengadaan" method="post" enctype="multipart/form-data">
+      <form action="/permintaan/dropdownPermintaan" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
             Uraian Jenis Barang : 
-            <select class="form-control" name="ID_PENGADAAN">
-            @foreach ($rencana_pengadaan_barang as $rencana)
-            <option value="{{ $rencana->ID_PENGADAAN}}">{{ $rencana->URAIAN_R_PENGADAAN}}</option>
+            <select class="form-control" name="ID_BARANG_HABIS_PAKAI">
+            @foreach ($barang_pakai_habis as $barang)
+            <option value="{{ $barang->ID_BARANG_HABIS_PAKAI}}">{{ $barang->URAIAN_R_PENGADAAN}}</option>
             @endforeach
             </select><br>        
             <button type="submit" class="btn btn-primary">Simpan</button>

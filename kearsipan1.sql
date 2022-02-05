@@ -36,17 +36,18 @@ CREATE TABLE `arsip` (
   `NASIB_AKHIR` varchar(30) NOT NULL,
   `KATEGORI_ARSIP` varchar(30) NOT NULL,
   `TAHUN_PEMINDAHAN` varchar(4) NOT NULL,
+  `UNIT_PENGOLAH` varchar(30) NOT NULL,
   PRIMARY KEY (`ID_ARSIP`),
   UNIQUE KEY `ARSIP_PK` (`ID_ARSIP`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `arsip` */
 
-insert  into `arsip`(`ID_ARSIP`,`KODE_KLAS`,`INDEKS`,`JENIS_ARSIP`,`KURUN_WAKTU`,`TINGKAT_PERKEMBANGAN`,`JUMLAH`,`KETERANGAN_ARSIP`,`NO_DEF_FOLDER`,`NO_DEF_BLOK`,`LOKASI_SIMPAN`,`JANGKA_WAKTU`,`NASIB_AKHIR`,`KATEGORI_ARSIP`,`TAHUN_PEMINDAHAN`) values 
-(1,'700','NHP-KKA','NHP Pemeriksaan Regular SMAN 1 Sidoarjo','2012','Asli - Copy','1 Berkas','Baik',1,1,'Rak 1',8,'Dinilai Kembali','terbatas','2020'),
-(2,'700','NHP-KKA','NHP - KKA Pemeriksaan Reguler SMAN 2 Sidoarjo','2012','Asli - Copy','1 Berkas','Baik',2,1,'Rak 1',8,'Dinilai Kembali','terbatas','2020'),
-(3,'700','NHP-KKA','NHP - KKA Pemeriksaan Reguler SMAN 1 Porong','2012','Asli - Copy','1 Berkas','Baik',3,1,'Rak 1',8,'Dinilai Kembali','terbatas','2020'),
-(4,'700','NHP-KKA','NHP Pemeriksaan Regular SMAN 2 Sidoarjo','2013','Asli - Copy','1 Berkas','Baik',1,1,'Rak 1',8,'Dinilai Kembali','terbatas','2020');
+insert  into `arsip`(`ID_ARSIP`,`KODE_KLAS`,`INDEKS`,`JENIS_ARSIP`,`KURUN_WAKTU`,`TINGKAT_PERKEMBANGAN`,`JUMLAH`,`KETERANGAN_ARSIP`,`NO_DEF_FOLDER`,`NO_DEF_BLOK`,`LOKASI_SIMPAN`,`JANGKA_WAKTU`,`NASIB_AKHIR`,`KATEGORI_ARSIP`,`TAHUN_PEMINDAHAN`,`UNIT_PENGOLAH`) values 
+(1,'700','NHP-KKA','NHP Pemeriksaan Regular SMAN 1 Sidoarjo','2012','Asli - Copy','1 Berkas','Baik',1,1,'Rak 1',8,'Dinilai Kembali','terbatas','2020','Kesekretariatan'),
+(2,'700','NHP-KKA','NHP - KKA Pemeriksaan Reguler SMAN 2 Sidoarjo','2012','Asli - Copy','1 Berkas','Baik',2,1,'Rak 1',8,'Dinilai Kembali','terbatas','2020','Kesekretariatan'),
+(3,'700','NHP-KKA','NHP - KKA Pemeriksaan Reguler SMAN 1 Porong','2012','Asli - Copy','1 Berkas','Baik',3,1,'Rak 1',8,'Dinilai Kembali','terbatas','2020','Kesekretariatan'),
+(4,'700','NHP-KKA','NHP Pemeriksaan Regular SMAN 2 Sidoarjo','2013','Asli - Copy','1 Berkas','Baik',1,1,'Rak 1',8,'Dinilai Kembali','terbatas','2020','Kesekretariatan');
 
 /*Table structure for table `barang_inventaris` */
 
@@ -71,7 +72,7 @@ CREATE TABLE `barang_inventaris` (
   `KETERANGAN_INV` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_BARANG_INV`),
   UNIQUE KEY `BARANG_INVENTARIS_PK` (`ID_BARANG_INV`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `barang_inventaris` */
 
@@ -152,10 +153,8 @@ CREATE TABLE `detail_pengadaan_barang` (
   `ID_PEGADAAN` int(11) NOT NULL,
   `TANGGAL_PENGADAAN` date NOT NULL,
   PRIMARY KEY (`ID_BARANG_HABIS_PAKAI`,`ID_PEGADAAN`),
-  KEY `FK_PENGADAAN` (`ID_PEGADAAN`),
   KEY `FK_BARANG` (`ID_BARANG_HABIS_PAKAI`),
-  CONSTRAINT `FK_BARANG` FOREIGN KEY (`ID_BARANG_HABIS_PAKAI`) REFERENCES `barang_pakai_habis` (`ID_BARANG_HABIS_PAKAI`),
-  CONSTRAINT `FK_PENGADAAN` FOREIGN KEY (`ID_PEGADAAN`) REFERENCES `rencana_pengadaan_barang` (`ID_PENGADAAN`)
+  CONSTRAINT `FK_BARANG` FOREIGN KEY (`ID_BARANG_HABIS_PAKAI`) REFERENCES `barang_pakai_habis` (`ID_BARANG_HABIS_PAKAI`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `detail_pengadaan_barang` */
@@ -168,15 +167,19 @@ CREATE TABLE `peminjaman_arsip` (
   `ID_PEMINJAMAN_ARSIP` int(11) NOT NULL AUTO_INCREMENT,
   `NIP` char(18) NOT NULL,
   `ID_ARSIP` int(11) NOT NULL,
+  `JUMLAH_ARSIP` int(11) NOT NULL,
   `TANGGAL_PINJAM_ARSIP` date NOT NULL,
   PRIMARY KEY (`ID_PEMINJAMAN_ARSIP`),
   KEY `8_FK` (`NIP`),
   KEY `FK_ARSIP2` (`ID_ARSIP`),
   CONSTRAINT `FK_ARSIP2` FOREIGN KEY (`ID_ARSIP`) REFERENCES `arsip` (`ID_ARSIP`),
   CONSTRAINT `FK_PEMINJAM_7_USER` FOREIGN KEY (`NIP`) REFERENCES `user` (`NIP`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `peminjaman_arsip` */
+
+insert  into `peminjaman_arsip`(`ID_PEMINJAMAN_ARSIP`,`NIP`,`ID_ARSIP`,`JUMLAH_ARSIP`,`TANGGAL_PINJAM_ARSIP`) values 
+(1,'151911513050',4,1,'2022-02-03');
 
 /*Table structure for table `peminjaman_barang_inv` */
 
@@ -194,9 +197,12 @@ CREATE TABLE `peminjaman_barang_inv` (
   KEY `ID_BARANG_INV` (`ID_BARANG_INV`),
   CONSTRAINT `FK_PEMINJAM_10_USER` FOREIGN KEY (`NIP`) REFERENCES `user` (`NIP`),
   CONSTRAINT `ID_BARANG_INV` FOREIGN KEY (`ID_BARANG_INV`) REFERENCES `barang_inventaris` (`ID_BARANG_INV`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `peminjaman_barang_inv` */
+
+insert  into `peminjaman_barang_inv`(`ID_PEMINJAMAN_INV`,`NIP`,`ID_BARANG_INV`,`JUMLAH_INV`,`TANGGAL_PINJAM_INV`) values 
+(1,'151911513050',1,1,'2022-02-03');
 
 /*Table structure for table `pengadaan_barang` */
 
@@ -212,7 +218,7 @@ CREATE TABLE `pengadaan_barang` (
   `KETERANGAN_RPB1` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_PENGADAAN1`),
   UNIQUE KEY `PENGADAAN_BARANG_PK1` (`ID_PENGADAAN1`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pengadaan_barang` */
 
@@ -231,14 +237,17 @@ CREATE TABLE `permintaan_barang` (
   `URAIAN_PERMINTAAN` varchar(100) NOT NULL,
   `VOLUME2` int(11) NOT NULL,
   `SATUAN2` varchar(30) NOT NULL,
-  `PAGU2` int(11) NOT NULL,
   `REALISASI2` int(11) NOT NULL,
   `KETERANGAN_RPB2` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_PERMINTAAN`),
   UNIQUE KEY `PERMINTAAN_BARANG_PK1` (`ID_PERMINTAAN`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `permintaan_barang` */
+
+insert  into `permintaan_barang`(`ID_PERMINTAAN`,`URAIAN_PERMINTAAN`,`VOLUME2`,`SATUAN2`,`REALISASI2`,`KETERANGAN_RPB2`) values 
+(21,'Cairan Pencuci Piring',1,'BKS',41500,'Kegiatan A'),
+(22,'handsanitizer 5 liter',2,'LITER',150000,'Kegiatan A');
 
 /*Table structure for table `rencana_pengadaan_barang` */
 
@@ -252,8 +261,7 @@ CREATE TABLE `rencana_pengadaan_barang` (
   `PAGU` int(11) NOT NULL,
   `REALISASI` int(11) NOT NULL,
   `KETERANGAN_RPB` varchar(100) NOT NULL,
-  PRIMARY KEY (`ID_PENGADAAN`),
-  UNIQUE KEY `PENGADAAN_BARANG_PK` (`ID_PENGADAAN`)
+  PRIMARY KEY (`ID_PENGADAAN`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `rencana_pengadaan_barang` */
@@ -297,6 +305,9 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `user` */
+
+insert  into `user`(`NIP`,`ID_ROLE`,`NAMA_USER`,`PASSWORD_USER`) values 
+('151911513050','1','SRI LESTARI','12345');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
