@@ -43,7 +43,7 @@
             Uraian Jenis Barang : 
             <select class="form-control" name="ID_PENGADAAN">
             @foreach ($rencana_pengadaan_barang as $rencana)
-            <option value="{{ $rencana->ID_PENGADAAN}}">{{ $rencana->URAIAN_R_PENGADAAN}}</option>
+            <option value="{{ $rencana->ID_PENGADAAN}}">{{ $rencana->URAIAN_RINCIAN}}</option>
             @endforeach
             </select><br>        
             <button type="submit" class="btn btn-primary">Simpan</button>

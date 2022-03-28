@@ -51,7 +51,12 @@
           <tbody>
           @foreach($rencana_pengadaan_barang as $data)
               <tr>
-                  <td>{{ $data->URAIAN_R_PENGADAAN }}</td>
+                  
+                    @foreach ($barang_pakai_habis as $id_barang)
+                    @if ($id_barang->ID_BARANG_HABIS_PAKAI === $data->ID_BARANG_HABIS_PAKAI)
+                    <td>{{$id_barang->URAIAN_RINCIAN}}</td>
+                    @endif
+                    @endforeach
                   <td style="text-align:center">{{ $data->VOLUME }}</td>
                   <td style="text-align:center">{{ $data->SATUAN }}</td>
                   <td style="text-align:center">{{ $data->PAGU }}</td>

@@ -40,7 +40,12 @@
     <!-- <h1>Tambah Data Rencana Pengadaaan</h1> -->
       <form action="/rencana_pengadaan/form_rencana_pengadaan" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-            Uraian Jenis Barang : <input type="text" class="form-control" name="URAIAN_R_PENGADAAN"><br>
+            Uraian Jenis Barang : 
+            <select class="form-control" name="ID_BARANG_HABIS_PAKAI">
+            @foreach ($barang_pakai_habis as $id_barang)
+            <option value="{{ $id_barang->ID_BARANG_HABIS_PAKAI}}">{{ $id_barang->URAIAN_RINCIAN}}</option>
+            @endforeach
+            </select><br>
             Volume : <input type="text"  class="form-control" name="VOLUME"><br>
             Satuan : <input type="text" class="form-control" name="SATUAN"><br>
             Pagu : <input type="text" class="form-control" name="PAGU"><br>  

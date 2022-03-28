@@ -24,7 +24,7 @@ class PengadaanController extends Controller
 
     public function dropdownPengadaan(Request $post)
     {
-        $pengadaan_barang = DB::table('rencana_pengadaan_barang')->where('ID_PENGADAAN', $post->ID_PENGADAAN)->get();
+        $pengadaan_barang = DB::table('rencana_pengadaan_barang')->join('barang_pakai_habis', 'rencana_pengadaan_barang.ID_BARANG_HABIS_PAKAI', '=', 'barang_pakai_habis.ID_BARANG_HABIS_PAKAI')->where('ID_PENGADAAN', $post->ID_PENGADAAN)->get();
         $data = array(
             'menu' => 'barang',
             'submenu' => 'view_pengadaan',
@@ -36,11 +36,13 @@ class PengadaanController extends Controller
 
     public function insertPengadaan()
     {
-        $rencana_pengadaan_barang = DB::table('rencana_pengadaan_barang')->get();
+        $barang_pakai_habis = DB::table('barang_pakai_habis')->get();
+        $rencana_pengadaan_barang = DB::table('rencana_pengadaan_barang')->join('barang_pakai_habis', 'rencana_pengadaan_barang.ID_BARANG_HABIS_PAKAI', '=', 'barang_pakai_habis.ID_BARANG_HABIS_PAKAI')->get();
         $pengadaan_barang = DB::table('pengadaan_barang')->get();
         $data = array(
             'menu' => 'barang',
             'submenu' => 'view_pengadaan',
+            'barang_pakai_habis' => $barang_pakai_habis,
             'rencana_pengadaan_barang' => $rencana_pengadaan_barang,
             'pengadaan_barang' => $pengadaan_barang,
         );

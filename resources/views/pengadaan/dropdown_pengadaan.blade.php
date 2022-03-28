@@ -41,8 +41,9 @@
       <form action="/pengadaan/tambahPengadaan" method="post">
             <input type = "hidden" name = "_token" value = "<?php echo csrf_token(
             ) ?>">
+
             Uraian Jenis Barang : <input type="text" class="form-control" name="URAIAN_PENGADAAN1"
-            value ="{{ $pengadaan_barang[0]->URAIAN_R_PENGADAAN }}"><br>
+            value ="{{ $pengadaan_barang[0]->URAIAN_RINCIAN }}"><br>
             Volume : <input type="text" class="form-control" name="VOLUME1"
             value ="{{ $pengadaan_barang[0]->VOLUME }}"><br>
             Satuan : <input type="text" class="form-control" name="SATUAN1"
